@@ -91,6 +91,44 @@ return [
             'prefix_indexes' => true,
         ],
 
+        //mongodb
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            //'dsn'   =>  'mongodb://hexin:Hexin123.@'.env('MONGO_DB_HOST', '192.168.66.33').//    ':27017/'.env('MONGO_DB_DATABASE'),
+            'host'     => env('MONGO_DB_HOST', '127.0.0.1'),
+            'port'     => env('MONGO_DB_PORT', 27017),
+            'database' => env('MONGO_DB_DATABASE','xinxiaosi'),
+            'username' => env('MONGO_DB_USERNAME',''),
+            'password' => env('MONGO_DB_PASSWORD',''),
+            'options'  => [
+                'database' => env('MONGO_DB_DATABASE','xinxiaosi') // sets the authentication database required by mongo 3
+            ]
+        ],
+
+        //用户中心
+        'userCenter' => [
+            'read'        => [   //从库
+                'host'     => env('DB_READ_HOST', '127.0.0.1'),
+                'port'     => env('DB_READ_PORT', '3306'),
+                'username' => env('DB_READ_USERNAME', 'root'),
+                'password' => env('DB_READ_PASSWORD', ''),
+            ],
+            'write'       => [   //主库
+                'host'     => env('DB_WRITE_HOST', '127.0.0.1'),
+                'port'     => env('DB_WRITE_PORT', '3306'),
+                'username' => env('DB_WRITE_USERNAME', 'root'),
+                'password' => env('DB_WRITE_PASSWORD', ''),
+            ],
+            'sticky'      =>  false,   //主从 新增或编辑一条记录，当前请求下强制查询主库（避免主从延迟）
+            'driver'      => 'mysql',
+            'database'    => env('USER_DB_DATABASE', 'xinxiaosi_user_center'),
+            'unix_socket' => env('USER_DB_SOCKET', ''),
+            'charset'     => 'utf8mb4',
+            'collation'   => 'utf8mb4_unicode_ci',
+            'prefix'      => env('USER_DB_PREFIX', 'xin_'),
+            'strict'      => false,
+            'engine'      => null,
+        ],
     ],
 
     /*
@@ -123,7 +161,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', ''),
         ],
 
         'default' => [
@@ -142,6 +180,13 @@ return [
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+        'jobQueue' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => 5,
+        ],
     ],
 
 ];

@@ -7,15 +7,15 @@ namespace App\Exceptions;
 
 use App\Models\Base\ResponseModel;
 use Illuminate\Http\Response;
+use Exception;
 
-class ValidatorException extends \Exception
+class ValidatorException extends Exception
 {
     /**
      * ValidatorException constructor.
      * @param array $error
-     * @param array $params 参数
      */
-    public function __construct($error = [], $params = [])
+    public function __construct($error = [])
     {
         parent::__construct($error[0], ResponseModel::DEFAULT_CODE_FAILURE);
     }
@@ -30,13 +30,7 @@ class ValidatorException extends \Exception
         //
     }
 
-    /**
-     * Render the exception into an HTTP response.
-     *
-     * @param \Illuminate\Http\Request
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request)
+    public function render()
     {
         $response = new Response();
         $response->exception = $this;
