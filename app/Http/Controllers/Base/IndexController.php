@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class IndexController extends Controller
 {
@@ -19,6 +20,11 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
+        $a = JWTAuth::attempt($request->all());
+        dd($a);
+
+
+
         //验证规则
         $rules = [
             'id' => 'required|int',

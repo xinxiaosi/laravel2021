@@ -18,7 +18,6 @@
       </list>
     </option>
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
@@ -135,6 +134,9 @@
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
     </include_path>
   </component>
   <component name="ProjectId" id="1rdpOjbFNukCxjj9lpUCy9atM0f" />
@@ -145,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../laravel-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/UserCenter" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -161,11 +163,11 @@
       <recent name="D:\phpstudy_pro\WWW\laravel2021" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Models\UserCenter" />
+      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Models" />
+      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Http\Repositories" />
       <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Http" />
       <recent name="D:\phpstudy_pro\WWW\laravel2021\app" />
-      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Exceptions" />
-      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Providers" />
-      <recent name="D:\phpstudy_pro\WWW\laravel2021\app\Http\Middleware" />
     </key>
   </component>
   <component name="RunManager">
@@ -185,7 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619315790879</updated>
-      <workItem from="1619315791997" duration="7332000" />
+      <workItem from="1619315791997" duration="18122000" />
     </task>
     <servers />
   </component>
@@ -205,18 +207,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="255" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619316731824" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619317814835">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619341637853">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619317814835" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619341637853" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1619320836980">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619320836980" />
-    <state x="678" y="240" key="NewPhpClassDialog" timestamp="1619316915843">
+    <state x="678" y="240" key="NewPhpClassDialog" timestamp="1619342340065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="678" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619316915843" />
+    <state x="678" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619342340065" />
     <state x="785" y="442" key="NewPhpFileDialog" timestamp="1619316858949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
