@@ -6,8 +6,9 @@ namespace App\Models\UserCenter\Models;
 
 use App\Exceptions\ApiException;
 use App\Models\UserCenter\UserCenterModel;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class AdminModel extends UserCenterModel
+class AdminModel extends UserCenterModel implements JWTSubject
 {
     public $table = 'admin';
 
@@ -41,7 +42,7 @@ class AdminModel extends UserCenterModel
      */
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = md5($value);
+        $this->attributes['password'] = password_hash(md5($value), PASSWORD_BCRYPT);
     }
 
     public function setRoleIdAttribute($value)

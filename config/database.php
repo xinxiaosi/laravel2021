@@ -108,16 +108,16 @@ return [
         //用户中心
         'userCenter' => [
             'read'        => [   //从库
-                'host'     => env('DB_READ_HOST', '127.0.0.1'),
-                'port'     => env('DB_READ_PORT', '3306'),
-                'username' => env('DB_READ_USERNAME', 'root'),
-                'password' => env('DB_READ_PASSWORD', ''),
+                'host'     => env('USER_DB_READ_HOST', env('DB_READ_HOST', '127.0.0.1')),
+                'port'     => env('USER_DB_READ_PORT', env('DB_READ_PORT', 3306)),
+                'username' => env('USER_DB_READ_USERNAME', env('DB_READ_USERNAME', 'root')),
+                'password' => env('USER_DB_READ_PASSWORD', env('DB_READ_PASSWORD', '')),
             ],
             'write'       => [   //主库
-                'host'     => env('DB_WRITE_HOST', '127.0.0.1'),
-                'port'     => env('DB_WRITE_PORT', '3306'),
-                'username' => env('DB_WRITE_USERNAME', 'root'),
-                'password' => env('DB_WRITE_PASSWORD', ''),
+                'host'     => env('USER_DB_WRITE_HOST', env('DB_WRITE_HOST', '127.0.0.1')),
+                'port'     => env('USER_DB_WRITE_PORT', env('DB_WRITE_PORT', '3306')),
+                'username' => env('USER_DB_WRITE_USERNAME', env('DB_WRITE_USERNAME', 'root')),
+                'password' => env('USER_DB_WRITE_PASSWORD', env('DB_WRITE_PASSWORD', '')),
             ],
             'sticky'      =>  false,   //主从 新增或编辑一条记录，当前请求下强制查询主库（避免主从延迟）
             'driver'      => 'mysql',

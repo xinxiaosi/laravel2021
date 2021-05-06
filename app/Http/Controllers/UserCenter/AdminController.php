@@ -18,6 +18,28 @@ class AdminController extends Controller
         $this->repository = $repository;
     }
 
+    public function login(Request $request)
+    {
+        //验证规则
+        $rules = [
+            'name' => 'required_without:email|string',
+            'email' => 'required_without:name|string',
+            'password' => 'required|string',
+        ];
+        //验证错误信息自定义
+        $messages = [
+
+        ];
+        //验证结果 错误就抛出异常
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            throw new ValidatorException($validator->errors()->all());
+        }
+
+        return $this->repository->login($validator->getData());
+    }
+
+
     public function addData(Request $request)
     {
         //验证规则

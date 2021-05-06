@@ -9,7 +9,10 @@ Route::group([
     'prefix' => 'userCenter/admin',
     'middleware' => ['response'],
 ], function () {
-    Route::post('/add', "AdminController@addData");
+    Route::post('/login', "AdminController@login");
+    Route::post('/add', "AdminController@addData")
+//        ->middleware('auth:jwt')
+    ;
     Route::get('/get', "AdminController@getData");
     Route::delete('/add', "AdminController@deleteData");
     Route::put('/add', "AdminController@editData");

@@ -7,7 +7,7 @@ use JWTAuth;
 
 class JWTAuthModel extends JWTAuth
 {
-    public function attempt(array $credentials)
+    public function attempt($credentials)
     {
         if (! $this->auth->byCredentials($credentials)) {
             return false;
