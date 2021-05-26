@@ -19,19 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81575127-c765-4b81-a116-7c7b3c783e8e" name="默认的" comment="">
+    <list default="true" id="81575127-c765-4b81-a116-7c7b3c783e8e" name="默认的" comment="2021-5-6 18:05:44">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Base/JWTAuthModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/JWTAuthModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +193,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -250,12 +243,35 @@
       <option name="presentableId" value="Default" />
       <updated>1619315790879</updated>
       <workItem from="1619315791997" duration="18122000" />
-      <workItem from="1620266311002" duration="22013000" />
+      <workItem from="1620266311002" duration="25269000" />
+      <workItem from="1621410934694" duration="1286000" />
+      <workItem from="1621412251003" duration="1229000" />
+      <workItem from="1621931027496" duration="1635000" />
+      <workItem from="1621995729765" duration="1508000" />
+      <workItem from="1622026670221" duration="2010000" />
     </task>
+    <task id="LOCAL-00001" summary="2021-5-6 18:05:44">
+      <created>1620295563788</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620295563788</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -267,6 +283,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2021-5-6 18:05:44" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-5-6 18:05:44" />
   </component>
   <component name="WindowStateProjectService">
     <state x="540" y="174" key="#CLI_Interpreters" timestamp="1620286037402">
@@ -309,54 +330,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620283538464" />
-    <state width="1877" height="257" key="GridCell.Tab.0.bottom" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.0.bottom" timestamp="1620299143631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.0.center" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143631" />
+    <state width="1877" height="257" key="GridCell.Tab.0.center" timestamp="1620299143631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.0.left" timestamp="1620289083302">
+    <state width="1877" height="257" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143631" />
+    <state width="1877" height="257" key="GridCell.Tab.0.left" timestamp="1620299143631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083302" />
-    <state width="1877" height="257" key="GridCell.Tab.0.right" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143631" />
+    <state width="1877" height="257" key="GridCell.Tab.0.right" timestamp="1620299143631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.1.bottom" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143631" />
+    <state width="1877" height="257" key="GridCell.Tab.1.bottom" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.1.center" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.1.center" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.1.left" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.1.left" timestamp="1620299143631">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.1.right" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143631" />
+    <state width="1877" height="257" key="GridCell.Tab.1.right" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.2.bottom" timestamp="1620289083304">
+    <state width="1877" height="257" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.2.bottom" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083304" />
-    <state width="1877" height="257" key="GridCell.Tab.2.center" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.2.center" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.2.left" timestamp="1620289083303">
+    <state width="1877" height="257" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.2.left" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083303" />
-    <state width="1877" height="257" key="GridCell.Tab.2.right" timestamp="1620289083304">
+    <state width="1877" height="257" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
+    <state width="1877" height="257" key="GridCell.Tab.2.right" timestamp="1620299143632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="257" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620289083304" />
+    <state width="1877" height="257" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620299143632" />
     <state x="678" y="240" key="NewPhpClassDialog" timestamp="1619342340065">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -365,18 +386,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="785" y="442" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619316858949" />
+    <state x="759" y="221" key="RollbackChangesDialog" timestamp="1621931271091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621931271091" />
     <state x="273" y="205" key="SettingsEditor" timestamp="1620286193916">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="273" y="205" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1620286193916" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1620295592071">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1620295592071" />
     <state x="492" y="261" width="1044" height="574" key="find.popup" timestamp="1620288402452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="492" y="261" width="1044" height="574" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620288402452" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1620288383255">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1621411001496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620288383255" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621411001496" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
