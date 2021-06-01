@@ -91,8 +91,8 @@ class BaseModel extends Model
     /**
      * 兼容旧版查询条件的条件处理
      * @param        $column
-     * @param null   $operator
-     * @param null   $value
+     * @param null $operator
+     * @param null $value
      * @param string $boolean
      * @return mixed
      */
@@ -191,7 +191,8 @@ class BaseModel extends Model
      * @param $field
      * @return mixed
      */
-    public function getFirst($where = [], $field = '*'){
+    public function getFirst($where = [], $field = '*')
+    {
         if ($where === [])
             return [];
 
@@ -266,15 +267,15 @@ class BaseModel extends Model
         foreach ($id as $k => $v) {
             $model = $this->find($v);
             if (empty($model)) {
-                $fail ++;
-                $message .= '第'.($k+1).'个删除失败的原因:数据不存在;';
+                $fail++;
+                $message .= '第' . ($k + 1) . '个删除失败的原因:数据不存在;';
             } else {
-                $success ++;
+                $success++;
                 $model->delete();
             }
         }
 
-        return ['message' => '成功删除'.$success.'个;失败'.$fail.'个;'.$message];
+        return ['message' => '成功删除' . $success . '个;失败' . $fail . '个;' . $message];
     }
 
     /**
@@ -297,7 +298,8 @@ class BaseModel extends Model
      * @param $data
      * @return array
      */
-    public function updateOrCreateTable($data) {
+    public function updateOrCreateTable($data)
+    {
         foreach ($data as $k => $v) {
             if (isset($v['id'])) {
                 $model = $this->find($v['id']);
@@ -326,7 +328,7 @@ class BaseModel extends Model
      */
     public function getTable()
     {
-        if (! isset($this->table)) {
+        if (!isset($this->table)) {
             return str_replace(
                 '\\', '', Str::snake(class_basename($this))
             );
@@ -340,10 +342,11 @@ class BaseModel extends Model
      * @param $data
      * @return \Illuminate\Config\Repository|int|mixed
      */
-    public function getPageSize($data){
-        if(isset($data['pagesize']) && !empty($data['pagesize'])){
+    public function getPageSize($data)
+    {
+        if (isset($data['pagesize']) && !empty($data['pagesize'])) {
             $pageSize = intval($data['pagesize']);
-        }else{
+        } else {
             $pageSize = config('app.pagesize');
         }
         return $pageSize;
@@ -354,13 +357,14 @@ class BaseModel extends Model
      * @param $data
      * @return int
      */
-    public function getPageNum($data){
-        if(isset($data['p']) && !empty($data['p'])){
+    public function getPageNum($data)
+    {
+        if (isset($data['p']) && !empty($data['p'])) {
             $pageSize = intval($data['p']);
-        }else{
+        } else {
             $pageSize = 0;
         }
-        if($pageSize < 1){
+        if ($pageSize < 1) {
             $pageSize = 0;
         }
         return $pageSize;
@@ -372,11 +376,12 @@ class BaseModel extends Model
      * @param array $format 需要修改的字段
      * @return mixed
      */
-    public function getFormatAttributeValue($model, $format = []) {
-        $array = $model ->toArray();
+    public function getFormatAttributeValue($model, $format = [])
+    {
+        $array = $model->toArray();
         count($array) == count($array, 1) ? $res[] = $array : $res = $array;
-        foreach ($res as $k => $v){
-            foreach ($format as $i => $j){
+        foreach ($res as $k => $v) {
+            foreach ($format as $i => $j) {
                 $v[$j] = empty($v[$j]) ? $this->getAttributeFromArray($j) : $v[$j];
                 $res[$k][$j] = $this->mutateAttributes($j, $v[$j]);
             }
@@ -392,10 +397,9 @@ class BaseModel extends Model
      */
     protected function mutateAttributes($key, $value)
     {
-        if (method_exists($this, 'format'.Str::studly($key).'Attribute')){
-            return $this->{'format'.Str::studly($key).'Attribute'}($value);
-        }
-        else{
+        if (method_exists($this, 'format' . Str::studly($key) . 'Attribute')) {
+            return $this->{'format' . Str::studly($key) . 'Attribute'}($value);
+        } else {
             return $value;
         }
     }
@@ -407,12 +411,12 @@ class BaseModel extends Model
      * @param $update //更新内容
      * @return string
      */
-    public function getChangesContent($before,$after,$update)
+    public function getChangesContent($before, $after, $update)
     {
         $content = '';
-        foreach ($update as $k => $v){
-            foreach ($before as $i => $j){
-                $content .= $k.':'.$j[$k]." 变为: ".$after[$i][$k]."; ";
+        foreach ($update as $k => $v) {
+            foreach ($before as $i => $j) {
+                $content .= $k . ':' . $j[$k] . " 变为: " . $after[$i][$k] . "; ";
             }
         }
         return $content;
@@ -424,19 +428,20 @@ class BaseModel extends Model
      * @param $update_before
      * @return string
      */
-    public function updateData($update,$update_before){
+    public function updateData($update, $update_before)
+    {
         $result = [];
-        foreach ($update as $k => $v){
-            foreach ($update_before as $i => $j){
-                if ($v != $j && $k == $i && $k != 'update_time'){
-                    $result[$k] =  $j.' 变为: '.$v;
+        foreach ($update as $k => $v) {
+            foreach ($update_before as $i => $j) {
+                if ($v != $j && $k == $i && $k != 'update_time') {
+                    $result[$k] = $j . ' 变为: ' . $v;
                 }
             }
         }
         $update_data = '';
-        foreach ($result as $k => $v){
+        foreach ($result as $k => $v) {
             $pattern = '%s: %s;';
-            $update_data .= sprintf($pattern,$k,$v);
+            $update_data .= sprintf($pattern, $k, $v);
         }
         return $update_data;
     }
@@ -445,8 +450,8 @@ class BaseModel extends Model
      * 新建一对多关联 1=>(1,2,3)
      *
      * @param        $related
-     * @param null   $foreignKey
-     * @param null   $localKey
+     * @param null $foreignKey
+     * @param null $localKey
      * @param string $separator
      * @return HasManyFromStr
      */
@@ -459,7 +464,7 @@ class BaseModel extends Model
         $localKey = $localKey ?: $this->getKeyName();
 
         return $this->newHasManyFromStr(
-            $instance->newQuery(), $this, $instance->getTable().'.'.$foreignKey, $localKey, $separator
+            $instance->newQuery(), $this, $instance->getTable() . '.' . $foreignKey, $localKey, $separator
         );
     }
 

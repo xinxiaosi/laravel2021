@@ -14,8 +14,9 @@ Route::group([
 //        ->middleware('auth:jwt')
     ;
     Route::get('/get', "AdminController@getData");
-    Route::delete('/add', "AdminController@deleteData");
-    Route::put('/add', "AdminController@editData");
-    Route::get('/info', "AdminController@getDataInfo");
+    Route::delete('/delete', "AdminController@deleteData");
+    Route::put('/edit', "AdminController@editData");
+    Route::get('/list', "AdminController@getList");
+    Route::get('/info', "AdminController@getInfo");
 });
 

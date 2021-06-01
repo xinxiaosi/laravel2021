@@ -94,11 +94,11 @@ class AdminModel extends UserCenterModel implements JWTSubject
     {
         $res = $this
             ->handleCondition($where)
-            ->with([
-                'department:id,department',
-                'role:id,role',
-            ])
-            ->orderBy('create_time', 'desc')
+//            ->with([
+//                'department:id,department',
+//                'role:id,role',
+//            ])
+            ->orderBy('id', 'desc')
             ->paginate(config('pageSize'))
             ->toArray();
 
