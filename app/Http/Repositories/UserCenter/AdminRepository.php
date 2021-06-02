@@ -20,6 +20,7 @@ class AdminRepository extends BaseRepository
 
     public function login($data)
     {
+        $where['name'] = $data['name'];
         $where['password'] = md5($data['password']);
         $where['status'] = self::TRUE;
         $where['is_delete'] = self::False;
@@ -29,17 +30,13 @@ class AdminRepository extends BaseRepository
         } else {
             $where['email'] = $data['email'];
         }
-        $userInfo = $this->admin->getFirst($where);
 
-        // jwt token
-
+        //jwt password加密用 password_hash('123456', PASSWORD_BCRYPT);
         if (!$token = auth('jwt')->attempt($where)) {
             return response()->json(['result' => 'failed']);
         }
-        dd($token);
         return $this->respondWithToken($token);
 
-        return $userInfo;
     }
 
     protected function respondWithToken($token)

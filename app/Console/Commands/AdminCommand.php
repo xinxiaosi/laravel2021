@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\UserCenter\Models\AdminModel;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class AdminCommand extends Command
 {
@@ -31,31 +32,30 @@ class AdminCommand extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
         $insert = [];
 
+        echo date('Y-m-d H:i:s', time()) . "开始运行 \n";
+        $value = 123456;
         for ($i = 0; $i <= 1000; $i++) {
-            $name = uniqid('xin') . $i;
+            $uid = uniqid('xin_');
+            $name = $uid . $i;
             $insert[] = [
                 'role_id' => rand(1, 4),
                 'name' => $name,
-                'password' => md5('123456'),
-                'uid' => md5($name . '' . time()),
-                'token' => md5($name . '' . time() . $i),
+                'password' => password_hash(md5($value), PASSWORD_BCRYPT),//运行很慢
+                'uid' => $uid,
+                'token' => md5($uid . time() . $i),
                 'email' => $name . '@email.com',
                 'phone' => rand(10000000000, 99999999999),
-                'status' => rand(1, 3),
+                'status' => rand(1, 2),
             ];
         }
+        echo date('Y-m-d H:i:s', time()) . "结束计算 \n";
+        DB::connection('userCenter')->table('admin')->insert($insert);
+        echo date('Y-m-d H:i:s', time()) . "结束运行 \n";
+        echo '=========================生成成功=========================';
 
-        $model = new AdminModel();
-        $model->insert($insert);
-        echo '生成成功';
     }
 }

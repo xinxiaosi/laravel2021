@@ -20,3 +20,15 @@ Route::group([
     Route::get('/info', "AdminController@getInfo");
 });
 
+//用户组管理
+Route::group([
+    'namespace' => 'App\Http\Controllers\UserCenter',
+    'prefix' => 'userCenter/group',
+    'middleware' => ['response'],
+], function () {
+    Route::post('/add', "GroupController@addData");
+    Route::delete('/delete', "GroupController@deleteData");
+    Route::put('/edit', "GroupController@editData");
+    Route::get('/list', "GroupController@getList");
+    Route::get('/info', "GroupController@getInfo");
+});

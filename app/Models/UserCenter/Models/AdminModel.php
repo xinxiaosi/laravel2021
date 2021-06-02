@@ -24,9 +24,10 @@ class AdminModel extends UserCenterModel implements JWTSubject
         'is_delete', //tinyint(1) unsigned NOT NULL DEFAULT '2' COMMENT '是否删除 1=是;2=否',
 //        'create_time',//int(10)  NOT NULL DEFAULT '0' COMMENT '创建时间',
 //        'update_time',//int(10)  NOT NULL DEFAULT '0' COMMENT '更新时间',
+        'main_id',//主id
     ];
 
-    public $hidden = ['password'];
+    public $hidden = ['password', 'is_delete'];
 
 
     public function getDepartmentIdsUrlAttribute($value)
@@ -40,55 +41,17 @@ class AdminModel extends UserCenterModel implements JWTSubject
      * password修改器
      * @param $value
      */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = password_hash(md5($value), PASSWORD_BCRYPT);
-    }
+//    public function setPasswordAttribute($value)
+//    {
+//        $this->attributes['password'] = password_hash(md5($value), PASSWORD_BCRYPT);
+//    }
 
-    public function setRoleIdAttribute($value)
-    {
-        if (is_array($value)) {
-            $this->attributes['role_id'] = implode(',', $value);
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function department()
-    {
-        return $this->hasOne(DepartmentModel::class, 'id', 'department_id');
-    }
-
-    public function role()
-    {
-        return $this->hasManyFromStr(UserRoleModel::class, 'id', 'role_id');
-    }
-
-    public function userInfo()
-    {
-        return $this->belongsTo(UserInfoModel::class, 'id', 'account_id')
-            ->withDefault();
-    }
+//    public function setRoleIdAttribute($value)
+//    {
+//        if (is_array($value)) {
+//            $this->attributes['role_id'] = implode(',', $value);
+//        }
+//    }
 
     public function getAdminList($where)
     {

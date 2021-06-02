@@ -10,7 +10,7 @@ use App\Http\Repositories\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class AdminController extends Controller
+class GroupController extends Controller
 {
     private $repository;
 
@@ -19,37 +19,15 @@ class AdminController extends Controller
         $this->repository = $repository;
     }
 
-    public function login(Request $request)
-    {
-        //验证规则
-        $rules = [
-            'name' => 'required_without:email|string',
-            'email' => 'required_without:name|string',
-            'password' => 'required|string',
-        ];
-        //验证错误信息自定义
-        $messages = [
-
-        ];
-        //验证结果 错误就抛出异常
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            throw new ValidatorException($validator->errors()->all());
-        }
-
-        return $this->repository->login($validator->getData());
-    }
-
     public function addData(Request $request)
     {
         //验证规则
         $rules = [
+            'parent_id' => 'required|int',
+            'ids_url' => 'nullable|string',
             'name' => 'required|string',
-            'password' => 'required|string',
-            'email' => 'nullable|string',
-            'phone' => 'nullable|string',
-            'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
+            'remarks' => 'required|string',
+            'status' => 'required|int',
         ];
         //验证错误信息自定义
         $messages = [
@@ -61,7 +39,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->addData($validator->getData());
+        return $this->repository->addGroup($validator->getData());
     }
 
     public function deleteData(Request $request)
@@ -80,21 +58,19 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->deleteData($validator->getData());
+        return $this->repository->deleteGroup($validator->getData());
     }
 
     public function editData(Request $request)
     {
         //验证规则
         $rules = [
-            'id' => 'int|required_without:uid',
-            'uid' => 'string|required_without:id',
+            'id' => 'required|int',
+            'parent_id' => 'nullable|int',
+            'ids_url' => 'nullable|string',
             'name' => 'nullable|string',
-            'password' => 'nullable|string',
-            'email' => 'nullable|string',
-            'phone' => 'nullable|string',
+            'remarks' => 'nullable|string',
             'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
         ];
         //验证错误信息自定义
         $messages = [
@@ -106,20 +82,15 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->editData($validator->getData());
+        return $this->repository->editGroup($validator->getData());
     }
 
     public function getList(Request $request)
     {
         //验证规则
         $rules = [
-            'id' => 'nullable|string',
-            'uid' => 'nullable|string',
+            'id' => 'nullable|int',
             'name' => 'nullable|string',
-            'email' => 'nullable|string',
-            'phone' => 'nullable|string',
-            'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
         ];
         //验证错误信息自定义
         $messages = [
@@ -131,15 +102,14 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->getList($validator->getData());
+        return $this->repository->getGroupList($validator->getData());
     }
 
     public function getInfo(Request $request)
     {
         //验证规则
         $rules = [
-            'id' => 'int|required_without:uid',
-            'uid' => 'string|required_without:id',
+            'id' => 'required|int',
         ];
         //验证错误信息自定义
         $messages = [
@@ -151,7 +121,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->getInfo($validator->getData());
+        return $this->repository->getGroupInfo($validator->getData());
     }
 
 }
