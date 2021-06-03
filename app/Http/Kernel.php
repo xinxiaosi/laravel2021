@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'response' => \App\Http\Middleware\Response::class, // 响应中间件
         'transaction'   =>  \App\Http\Middleware\DBTransaction::class, // 事务中间件
         'auth'          =>  \App\Http\Middleware\Authenticate::class, //  用户验证
+        'jwt'          =>  \App\Http\Middleware\JwtMiddleware::class, //  jwt用户验证
     ];
 }

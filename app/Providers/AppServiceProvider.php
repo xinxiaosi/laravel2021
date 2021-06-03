@@ -11,31 +11,33 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     * @param Request $request\
+     * @param Request $request \
      * @return void
      */
     public function boot(Request $request)
     {
 //      日志记录sql 语句 和 请求参数
-        if(env('SHOW_SQL', true) === true){
-            Log::channel('showSqlLog')->info('用户请求数据:',$request->all());
-            DB::listen(function($query) {
+        if (env('SHOW_SQL', true) === true) {
+            $params = $request->all();
+            DB::listen(function ($query) use ($params) {
                 $bindings = $query->bindings;
                 $time = $query->time;
                 $sql_type = substr($query->sql, 0, 6);//sql类型 增删改查
                 $slow_rule = [
-                    'select' => 1500,
-                    'insert' => 200,
-                    'update' => 200,
-                    'delete' => 200
+                    'select' => env('SQL_SELECT_TIME', 2000),
+                    'insert' => env('SQL_INSERT_TIME', 500),
+                    'update' => env('SQL_UPDATE_TIME', 500),
+                    'delete' => env('SQL_DELETE_TIME', 500),
                 ];
                 $maxTime = $slow_rule[$sql_type] ?? 100;
-                if($bindings) {
-                    $time >= $maxTime
-                    && Log::channel('showSqlLog')->info(' execution time: '.$query->time.'ms; '.$query->sql.': params:'.json_encode($bindings));
+                if ($bindings) {
+                    Log::channel('showSqlLog')->info('用户请求数据:', $params);
+                    $time >= $maxTime && Log::channel('showSqlLog')
+                        ->info(' execution time: ' . $query->time . 'ms; ' . $query->sql . ': params:' . json_encode($bindings));
                 } else {
-                    $time >= $maxTime
-                    && Log::channel('showSqlLog')->info(' execution time: '.$query->time.'ms; '.$query->sql);
+                    Log::channel('showSqlLog')->info('用户请求数据:', $params);
+                    $time >= $maxTime && Log::channel('showSqlLog')
+                        ->info(' execution time: ' . $query->time . 'ms; ' . $query->sql);
                 }
             });
         }

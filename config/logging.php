@@ -99,6 +99,30 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        //慢查询
+        'showSqlLog' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/showSql/showSql.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        //邮箱发送错误日志
+        'emailLog' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/email/email.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
+
+        //邮箱发送错误日志
+        'jobLog' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/job/job.log'),
+            'level' => 'info',
+            'days' => 7,
+        ],
     ],
 
 ];

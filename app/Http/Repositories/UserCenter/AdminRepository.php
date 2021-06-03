@@ -44,7 +44,7 @@ class AdminRepository extends BaseRepository
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('jwt')->factory()->getTTL() * 6000
+            'expires_in' => '10'
         ]);
     }
 
@@ -81,6 +81,9 @@ class AdminRepository extends BaseRepository
 
     public function getInfo($data)
     {
+
+        dd(config('userInfo'));
+
         if (is_real_exists($data['id'])) {
             $where['id'] = $data['id'];
         } else {

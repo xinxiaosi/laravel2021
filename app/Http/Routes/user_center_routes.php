@@ -2,7 +2,6 @@
 /**
  * 用户模块
  */
-
 //管理员管理
 Route::group([
     'namespace' => 'App\Http\Controllers\UserCenter',
@@ -10,9 +9,7 @@ Route::group([
     'middleware' => ['response'],
 ], function () {
     Route::post('/login', "AdminController@login");
-    Route::post('/add', "AdminController@addData")
-//        ->middleware('auth:jwt')
-    ;
+    Route::post('/add', "AdminController@addData");
     Route::get('/get', "AdminController@getData");
     Route::delete('/delete', "AdminController@deleteData");
     Route::put('/edit', "AdminController@editData");
@@ -24,7 +21,7 @@ Route::group([
 Route::group([
     'namespace' => 'App\Http\Controllers\UserCenter',
     'prefix' => 'userCenter/group',
-    'middleware' => ['response'],
+    'middleware' => ['response', 'jwt'],
 ], function () {
     Route::post('/add', "GroupController@addData");
     Route::delete('/delete', "GroupController@deleteData");
