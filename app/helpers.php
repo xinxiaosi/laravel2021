@@ -3,7 +3,8 @@
 use App\Exceptions\ApiException;
 use Illuminate\Support\Facades\Cache;
 
-function changeToQuotes($str) {
+function changeToQuotes($str)
+{
     return sprintf("'%s'", $str);
 }
 
@@ -49,28 +50,62 @@ function jsonToArray($json)
     return $json;
 }
 
-function getSpuCode($prefix = 'SP') {
-    $key = 'system:spu_incr:code:'.$prefix;
+function getSpuCode($prefix = 'SP')
+{
+    $key = 'system:spu_incr:code:' . $prefix;
     if (Cache::has($key)) {
         Cache::increment($key, 1);
     } else {
-        Cache::set($key, 100, 3600*24);
+        Cache::set($key, 100, 3600 * 24);
     }
     $count = Cache::get($key);
-    return $prefix.time().$count;
+    return $prefix . time() . $count;
 }
 
-function getCode($prefix = 'OR') {
-    $key = 'system:code_incr:code:'.$prefix;
+function getCode($prefix = 'OR')
+{
+    $key = 'system:code_incr:code:' . $prefix;
     if (Cache::has($key)) {
         Cache::increment($key, 1);
     } else {
-        Cache::set($key, 100, 3600*24);
+        Cache::set($key, 100, 3600 * 24);
     }
     $count = Cache::get($key);
-    return $prefix.time().$count;
+    return $prefix . time() . $count;
 }
 
+/**
+ * 算法分类
+ * @param $data
+ * @return array
+ */
+function generateTree($data)
+{
+    //重组数组 键值key改为id 一般key值从1开始
+    $items = [];
+    foreach($data as $v) {
+        $items[$v['id']] = $v;
+    }
+
+    $tree = [];
+    foreach($items as $k => $v){
+        if (isset($items[$v['parent_id']])) {
+            //不是根节点的将自己的地址放到父级的child节点
+            $items[$v['parent_id']] ['children'] [] = &$items[$k];
+        } else {
+            //根节点直接把地址放到新数组中
+            $tree[] = &$items[$k];
+        }
+    }
+
+    return $tree;
+}
+
+/**
+ * 抛出错误
+ * @param array $error
+ * @throws ApiException
+ */
 function throwError($error = ApiException::ERROR_DATA_NOT_EXISTS)
 {
     throw new ApiException($error);
@@ -79,21 +114,21 @@ function throwError($error = ApiException::ERROR_DATA_NOT_EXISTS)
 /**
  * 获取每天自增的编号
  * @param string $prefix
- * @param bool   $suffix
+ * @param bool $suffix
  * @return string
  */
 function get_increase_code($prefix = 'PR', $suffix = false)
 {
-    $tail = $suffix ? rand(10,99) : '';
+    $tail = $suffix ? rand(10, 99) : '';
     if (Cache::has('system:auto_increment:code:' . $prefix)) {
-        $code = $prefix.Cache::get('system:auto_increment:code:' . $prefix);
+        $code = $prefix . Cache::get('system:auto_increment:code:' . $prefix);
         Cache::increment('system:auto_increment:code:' . $prefix);
     } else {
         $expired_time = strtotime(date('Y-m-d 23:59:59')) - time();
-        $origin = date('ymd').'00001';
+        $origin = date('ymd') . '00001';
         Cache::add('system:auto_increment:code:' . $prefix, $origin, $expired_time);
         Cache::increment('system:auto_increment:code:' . $prefix);
-        $code =  $prefix . $origin . $tail;
+        $code = $prefix . $origin . $tail;
     }
     return $suffix ? $code . $tail : $code;
 }
@@ -113,26 +148,28 @@ function is_real_exists($needle)
  * @param        $requestData
  * @param        $url
  * @param string $method
- * @param array  $header
+ * @param array $header
  * @return mixed
  * @throws \GuzzleHttp\Exception\GuzzleException
  */
 function send_http_request($requestData, $url, $method = 'GET', $header = [])
 {
     $client = new \GuzzleHttp\Client([
-        'timeout'  => 10
+        'timeout' => 10
     ]);
-    strtoupper($method) === 'GET' && $url .= '?'.http_build_query($requestData);
-    $response = $client->request($method,$url,[
+    strtoupper($method) === 'GET' && $url .= '?' . http_build_query($requestData);
+    $response = $client->request($method, $url, [
         'form_params' => strtoupper($method) === 'GET' ? [] : $requestData,
         'headers' => $header,
 //        'proxy' => '127.0.0.1:8888'
     ]);
     return json_decode((string)$response->getBody(), true);
 }
-function curl_get_html($url, $req = [], $header = []){
+
+function curl_get_html($url, $req = [], $header = [])
+{
     $client = new \GuzzleHttp\Client([
-        'timeout'  => 10
+        'timeout' => 10
     ]);
     $url .= !empty($req) ? (stripos($url, '?') !== false ? '&' : '?') . http_build_query($req) : '';
     $header += [
@@ -177,9 +214,9 @@ function handle_null(&$array, $force_delete = false)
  */
 function convert_to_hump($str, $lcfirst = true)
 {
-    $str = preg_replace_callback('/([-_]+([a-z]{1}))/i',function($matches){
+    $str = preg_replace_callback('/([-_]+([a-z]{1}))/i', function ($matches) {
         return strtoupper($matches[2]);
-    },$str);
+    }, $str);
     return $lcfirst ? lcfirst($str) : $str;
 }
 
@@ -188,9 +225,9 @@ function convert_to_hump($str, $lcfirst = true)
  */
 function convert_to_line($str)
 {
-    $str = preg_replace_callback('/([A-Z]{1})/',function($matches){
-        return '_'.strtolower($matches[0]);
-    },$str);
+    $str = preg_replace_callback('/([A-Z]{1})/', function ($matches) {
+        return '_' . strtolower($matches[0]);
+    }, $str);
     return $str;
 }
 
@@ -206,7 +243,7 @@ function convert_hump(array $data, $lcfirst = true)
     foreach ($data as $key => $item) {
         if (is_array($item) || is_object($item)) {
             $key = $lcfirst ? lcfirst(convert_to_hump($key)) : ucfirst(convert_to_hump($key));
-            $result[$key] = convert_hump((array)$item,$lcfirst);
+            $result[$key] = convert_hump((array)$item, $lcfirst);
         } else {
             $key = $lcfirst ? lcfirst(convert_to_hump($key)) : ucfirst(convert_to_hump($key));
             $result[$key] = $item;
@@ -214,6 +251,7 @@ function convert_hump(array $data, $lcfirst = true)
     }
     return $result;
 }
+
 /**
  * 转化数组为小写下划线形式
  * @param array $data
@@ -259,9 +297,10 @@ function get_date_time_for_alibaba($value)
     $value = substr($value, 0, 14);
     return $value ? date('Y-m-d H:i:s', strtotime($value)) : '';
 }
+
 /**
- * @param  string|int $from 时间开始值
- * @param  string|int $to 时间结束值
+ * @param string|int $from 时间开始值
+ * @param string|int $to 时间结束值
  * @param int $unit 结算结果的单位值（默认一天即为86400秒）
  * @return int|string
  */
@@ -298,7 +337,7 @@ function between_for_clickhouse($stringCondition, $targetType = 'intval')
 
 function maopao()
 {
-    $arr = [99,88,77,55,44,66,22,32,31,35,6,9,7,5,1,2,3];
+    $arr = [99, 88, 77, 55, 44, 66, 22, 32, 31, 35, 6, 9, 7, 5, 1, 2, 3];
     $len = count($arr);
     $n = count($arr) - 1;
     for ($i = 0; $i < $len; $i++) {
@@ -313,7 +352,8 @@ function maopao()
     return $arr;
 }
 
-function quick_sort($array) {
+function quick_sort($array)
+{
 
     if (count($array) <= 1)
         return $array;
@@ -321,7 +361,7 @@ function quick_sort($array) {
     $key = $array[0];
     $left_arr = [];
     $right_arr = [];
-    for ($i=1; $i<count($array); $i++){
+    for ($i = 1; $i < count($array); $i++) {
         if ($array[$i] <= $key)
             $left_arr[] = $array[$i];
         else

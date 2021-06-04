@@ -31,13 +31,15 @@ class AppServiceProvider extends ServiceProvider
                 ];
                 $maxTime = $slow_rule[$sql_type] ?? 100;
                 if ($bindings) {
-                    Log::channel('showSqlLog')->info('用户请求数据:', $params);
-                    $time >= $maxTime && Log::channel('showSqlLog')
-                        ->info(' execution time: ' . $query->time . 'ms; ' . $query->sql . ': params:' . json_encode($bindings));
+                    if ($time >= $maxTime) {
+                        Log::channel('showSqlLog')->info('用户请求数据:', $params);
+                        Log::channel('showSqlLog')->info(' execution time: ' . $query->time . 'ms; ' . $query->sql . ': params:' . json_encode($bindings));
+                    }
                 } else {
-                    Log::channel('showSqlLog')->info('用户请求数据:', $params);
-                    $time >= $maxTime && Log::channel('showSqlLog')
-                        ->info(' execution time: ' . $query->time . 'ms; ' . $query->sql);
+                    if ($time >= $maxTime) {
+                        Log::channel('showSqlLog')->info('用户请求数据:', $params);
+                        Log::channel('showSqlLog')->info(' execution time: ' . $query->time . 'ms; ' . $query->sql);
+                    }
                 }
             });
         }

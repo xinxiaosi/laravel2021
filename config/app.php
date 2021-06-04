@@ -236,8 +236,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         ######################################################
-        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
-        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+//        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+//        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
 
     ],
 

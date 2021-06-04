@@ -1,12 +1,14 @@
 <?php
 
+
 namespace App\Models\UserCenter\Models;
+
 
 use App\Models\UserCenter\UserCenterModel;
 
-class RoleModel extends UserCenterModel
+class AuthModel extends UserCenterModel
 {
-    public $table = 'role';
+    public $table = 'auth';
 
     public $fillable = [
         'parent_id', //int NOT NULL DEFAULT '0' COMMENT '父级id',
@@ -18,22 +20,4 @@ class RoleModel extends UserCenterModel
 //        'update_time', //int NOT NULL DEFAULT '0' COMMENT '更新时间',
         'main_id', //mediumint NOT NULL DEFAULT '1' COMMENT '主id',
     ];
-
-    public function auth()
-    {
-        return $this->hasMany(RoleAuthModel::class, 'role_id', 'id')
-            ->join('auth', 'role_auth.auth_id', '=', 'auth.id')
-            ->selectRaw('xin_role_auth.role_id,xin_auth.id,xin_auth.name,xin_auth.status,xin_auth.parent_id');
-    }
-
-    public function getRoleInfo($where)
-    {
-        $info = $this->handleCondition($where)
-            ->with('auth')
-            ->first();
-
-        $info['tree'] = generateTree($info['auth']);
-
-        return $info;
-    }
 }

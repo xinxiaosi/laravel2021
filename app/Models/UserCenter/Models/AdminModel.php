@@ -41,17 +41,18 @@ class AdminModel extends UserCenterModel implements JWTSubject
      * password修改器
      * @param $value
      */
-//    public function setPasswordAttribute($value)
-//    {
-//        $this->attributes['password'] = password_hash(md5($value), PASSWORD_BCRYPT);
-//    }
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = password_hash(md5($value), PASSWORD_BCRYPT);
+//        $this->attributes['password'] = \Hash::make(md5($value));
+    }
 
-//    public function setRoleIdAttribute($value)
-//    {
-//        if (is_array($value)) {
-//            $this->attributes['role_id'] = implode(',', $value);
-//        }
-//    }
+    public function setRoleIdAttribute($value)
+    {
+        if (is_array($value)) {
+            $this->attributes['role_id'] = implode(',', $value);
+        }
+    }
 
     public function getAdminList($where)
     {
