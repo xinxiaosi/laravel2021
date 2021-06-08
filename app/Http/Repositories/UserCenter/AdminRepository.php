@@ -48,6 +48,7 @@ class AdminRepository extends BaseRepository
         ]);
     }
 
+
     public function addData($data)
     {
         $user = $this->admin->where('name', $data['name'])->first();

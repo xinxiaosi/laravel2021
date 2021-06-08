@@ -8,10 +8,8 @@ use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
 use App\Models\UserCenter\Models\AdminModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
-use function Symfony\Component\String\u;
 
 class JwtBaseController extends Controller
 {
@@ -68,7 +66,7 @@ class JwtBaseController extends Controller
     /**
      * 管理员登录
      * @param Request $request
-     * @return array|\Illuminate\Http\JsonResponse
+     * @return mixed
      */
     public function login(Request $request)
     {

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Repositories\BaseRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -29,7 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
             $controller = explode('@',$action['controller'] ?? '');
             $logic = str_ireplace('Controllers','Repositories',reset($controller));
             $logic = str_ireplace('Controller','Repository',$logic);
-            return class_exists($logic) ? resolve($logic) : resolve(\App\Http\Repositories\BaseRepository::class);
+            return class_exists($logic) ? resolve($logic) : resolve(BaseRepository::class);
         });
     }
 }

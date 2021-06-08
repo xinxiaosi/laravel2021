@@ -4,9 +4,10 @@
 namespace App\Http\Controllers\UserCenter;
 
 
+use App\Exceptions\ApiException;
 use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Repository;
+use App\Http\Repositories\UserCenter\AdminRepository as Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +20,12 @@ class AdminController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * 登录
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function login(Request $request)
     {
         //验证规则
@@ -40,6 +47,13 @@ class AdminController extends Controller
         return $this->repository->login($validator->getData());
     }
 
+    /**
+     * 添加
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     * @throws ApiException
+     */
     public function addData(Request $request)
     {
         //验证规则
@@ -64,6 +78,12 @@ class AdminController extends Controller
         return $this->repository->addData($validator->getData());
     }
 
+    /**
+     * 删除
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function deleteData(Request $request)
     {
         //验证规则
@@ -83,6 +103,12 @@ class AdminController extends Controller
         return $this->repository->deleteData($validator->getData());
     }
 
+    /**
+     * 编辑
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function editData(Request $request)
     {
         //验证规则
@@ -109,6 +135,12 @@ class AdminController extends Controller
         return $this->repository->editData($validator->getData());
     }
 
+    /**
+     * 获取列表
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getList(Request $request)
     {
         //验证规则
@@ -134,6 +166,12 @@ class AdminController extends Controller
         return $this->repository->getList($validator->getData());
     }
 
+    /**
+     * 获取详情
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getInfo(Request $request)
     {
         //验证规则

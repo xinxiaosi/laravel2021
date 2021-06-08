@@ -38,6 +38,11 @@ class RoleRepository extends BaseRepository
         return $this->role->deleteItem($data);
     }
 
+    /**
+     * @param $data
+     * @return array
+     * @throws \App\Exceptions\ApiException
+     */
     public function editRole($data)
     {
         $where['id'] = $data['id'];

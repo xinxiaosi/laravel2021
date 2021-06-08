@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Base;
 
 use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Repository;
+use App\Http\Repositories\Base\IndexRepository as Repository;
 use App\Models\UserCenter\Models\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;

@@ -20,20 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81575127-c765-4b81-a116-7c7b3c783e8e" name="默认的" comment="2021-5-6 18:05:44">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AuthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/RoleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AuthRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/RoleRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AuthModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/RoleAuthModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Routes/common_route.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/common_route.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/RoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/RoleRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/RoleModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/RoleModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +201,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/UserCenter/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -212,7 +210,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.php.debug.xdebug.proxy" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -264,7 +262,9 @@
       <workItem from="1622531072504" duration="9602000" />
       <workItem from="1622596326615" duration="16380000" />
       <workItem from="1622690501246" duration="18042000" />
-      <workItem from="1622769887777" duration="15783000" />
+      <workItem from="1622769887777" duration="15947000" />
+      <workItem from="1623134924602" duration="2799000" />
+      <workItem from="1623138771345" duration="3063000" />
     </task>
     <task id="LOCAL-00001" summary="2021-5-6 18:05:44">
       <created>1620295563788</created>
@@ -342,6 +342,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="243" key="#服务器/0.0.1920.1040@0.0.1920.1040" timestamp="1622614423211" />
+    <state x="586" y="198" key="#检查" timestamp="1623139637646">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#检查/0.0.1920.1040@0.0.1920.1040" timestamp="1623139637646" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1622774636944">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -406,10 +410,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621931271091" />
-    <state x="273" y="205" key="SettingsEditor" timestamp="1622622871791">
+    <state x="273" y="205" key="SettingsEditor" timestamp="1623139929156">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="273" y="205" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622622871791" />
+    <state x="273" y="205" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1623139929156" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1620295592071">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -418,10 +422,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1622616592326" />
-    <state x="492" y="261" width="1140" height="685" key="find.popup" timestamp="1622618198017">
+    <state x="492" y="261" width="1140" height="685" key="find.popup" timestamp="1623139191022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="492" y="261" width="1140" height="685" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622618198017" />
+    <state x="492" y="261" width="1140" height="685" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1623139191022" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1622615723126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

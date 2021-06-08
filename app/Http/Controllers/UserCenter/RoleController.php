@@ -6,7 +6,7 @@ namespace App\Http\Controllers\UserCenter;
 
 use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Repository;
+use App\Http\Repositories\UserCenter\RoleRepository as Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +19,12 @@ class RoleController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * 添加
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function addRole(Request $request)
     {
         //验证规则
@@ -44,6 +50,12 @@ class RoleController extends Controller
         return $this->repository->addRole($validator->getData());
     }
 
+    /**
+     * 删除
+     * @param Request $request
+     * @return array|string[]
+     * @throws ValidatorException
+     */
     public function deleteRole(Request $request)
     {
         //验证规则
@@ -63,6 +75,12 @@ class RoleController extends Controller
         return $this->repository->deleteRole($validator->getData());
     }
 
+    /**
+     * 编辑
+     * @param Request $request
+     * @return array
+     * @throws ValidatorException
+     */
     public function editRole(Request $request)
     {
         //验证规则
@@ -87,6 +105,12 @@ class RoleController extends Controller
         return $this->repository->editRole($validator->getData());
     }
 
+    /**
+     * 获取列表
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getRoleList(Request $request)
     {
         //验证规则
@@ -107,6 +131,12 @@ class RoleController extends Controller
         return $this->repository->getRoleList($validator->getData());
     }
 
+    /**
+     * 获取详情
+     * @param Request $request
+     * @return array
+     * @throws ValidatorException
+     */
     public function getRoleInfo(Request $request)
     {
         //验证规则

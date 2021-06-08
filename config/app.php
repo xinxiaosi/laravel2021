@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /**********************添加区************************/
-        App\Providers\RepositoryServiceProvider::class,//自动映射
+//        App\Providers\RepositoryServiceProvider::class,//自动映射
 //        Intervention\Image\ImageServiceProvider::class,//Intervention/image 图片处理
 //        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,//七牛
 //////        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,//SimpleSoftwareIO扩展包生成二维码

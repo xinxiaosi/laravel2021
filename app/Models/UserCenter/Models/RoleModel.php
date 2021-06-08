@@ -23,16 +23,17 @@ class RoleModel extends UserCenterModel
     {
         return $this->hasMany(RoleAuthModel::class, 'role_id', 'id')
             ->join('auth', 'role_auth.auth_id', '=', 'auth.id')
-            ->selectRaw('xin_role_auth.role_id,xin_auth.id,xin_auth.name,xin_auth.status,xin_auth.parent_id');
+            ->selectRaw('xin_role_auth.role_id,xin_auth.id,xin_auth.name,xin_auth.parent_id')
+            ;
     }
 
     public function getRoleInfo($where)
     {
         $info = $this->handleCondition($where)
             ->with('auth')
-            ->first();
-
-        $info['tree'] = generateTree($info['auth']);
+            ->first()
+            ->toArray();
+        $info['auth'] = generateTree($info['auth']);
 
         return $info;
     }

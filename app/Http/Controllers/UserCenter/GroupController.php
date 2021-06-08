@@ -6,7 +6,7 @@ namespace App\Http\Controllers\UserCenter;
 
 use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Repository;
+use App\Http\Repositories\UserCenter\GroupRepository as Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +19,12 @@ class GroupController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * 添加
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function addData(Request $request)
     {
         //验证规则
@@ -42,6 +48,12 @@ class GroupController extends Controller
         return $this->repository->addGroup($validator->getData());
     }
 
+    /**
+     * 删除
+     * @param Request $request
+     * @return array|string[]
+     * @throws ValidatorException
+     */
     public function deleteData(Request $request)
     {
         //验证规则
@@ -61,6 +73,12 @@ class GroupController extends Controller
         return $this->repository->deleteGroup($validator->getData());
     }
 
+    /**
+     * 编辑
+     * @param Request $request
+     * @return array
+     * @throws ValidatorException
+     */
     public function editData(Request $request)
     {
         //验证规则
@@ -85,6 +103,12 @@ class GroupController extends Controller
         return $this->repository->editGroup($validator->getData());
     }
 
+    /**
+     * 获取列表
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getList(Request $request)
     {
         //验证规则
@@ -105,6 +129,12 @@ class GroupController extends Controller
         return $this->repository->getGroupList($validator->getData());
     }
 
+    /**
+     * 获取详情
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getInfo(Request $request)
     {
         //验证规则

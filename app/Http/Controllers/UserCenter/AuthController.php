@@ -6,7 +6,7 @@ namespace App\Http\Controllers\UserCenter;
 
 use App\Exceptions\ValidatorException;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Repository;
+use App\Http\Repositories\UserCenter\AuthRepository as Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +19,12 @@ class AuthController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * 添加
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function addAuth(Request $request)
     {
         //验证规则
@@ -43,6 +49,12 @@ class AuthController extends Controller
         return $this->repository->addAuth($validator->getData());
     }
 
+    /**
+     * 删除
+     * @param Request $request
+     * @return array|string[]
+     * @throws ValidatorException
+     */
     public function deleteAuth(Request $request)
     {
         //验证规则
@@ -62,6 +74,12 @@ class AuthController extends Controller
         return $this->repository->deleteAuth($validator->getData());
     }
 
+    /**
+     * 编辑
+     * @param Request $request
+     * @return array
+     * @throws ValidatorException
+     */
     public function editAuth(Request $request)
     {
         //验证规则
@@ -86,6 +104,12 @@ class AuthController extends Controller
         return $this->repository->editAuth($validator->getData());
     }
 
+    /**
+     * 获取列表
+     * @param Request $request
+     * @return array|mixed
+     * @throws ValidatorException
+     */
     public function getAuthList(Request $request)
     {
         //验证规则
@@ -107,6 +131,12 @@ class AuthController extends Controller
         return $this->repository->getAuthList($validator->getData());
     }
 
+    /**
+     * 获取详情
+     * @param Request $request
+     * @return mixed
+     * @throws ValidatorException
+     */
     public function getAuthInfo(Request $request)
     {
         //验证规则
