@@ -8,7 +8,7 @@
  */
 Route::group([
     'namespace' => 'App\Http\Controllers\Common',
-    'prefix' => 'common/admin',
+    'prefix' => 'common/user',
     'middleware' => ['response'],
 ], function () {
     Route::post('/login', "JwtBaseController@login");//管理员登录

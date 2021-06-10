@@ -54,16 +54,20 @@ class AdminController extends Controller
      * @throws ValidatorException
      * @throws ApiException
      */
-    public function addData(Request $request)
+    public function addAdmin(Request $request)
     {
         //验证规则
         $rules = [
-            'name' => 'required|string',
+            //账号信息
+            'name'     => 'required|string',
             'password' => 'required|string',
-            'email' => 'nullable|string',
-            'phone' => 'nullable|string',
-            'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
+            'email'    => 'nullable|string',
+            'phone'    => 'nullable|string',
+            'status'   => 'nullable|int',
+            //角色信息
+            'role'     => 'nullable|array',
+            //组织信息
+            'group'    => 'nullable|array',
         ];
         //验证错误信息自定义
         $messages = [
@@ -75,7 +79,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->addData($validator->getData());
+        return $this->repository->addAdmin($validator->getData());
     }
 
     /**
@@ -84,7 +88,7 @@ class AdminController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function deleteData(Request $request)
+    public function deleteAdmin(Request $request)
     {
         //验证规则
         $rules = [
@@ -100,7 +104,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->deleteData($validator->getData());
+        return $this->repository->deleteAdmin($validator->getData());
     }
 
     /**
@@ -109,7 +113,7 @@ class AdminController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function editData(Request $request)
+    public function editAdmin(Request $request)
     {
         //验证规则
         $rules = [
@@ -132,7 +136,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->editData($validator->getData());
+        return $this->repository->editAdmin($validator->getData());
     }
 
     /**
@@ -141,7 +145,7 @@ class AdminController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function getList(Request $request)
+    public function getAdminList(Request $request)
     {
         //验证规则
         $rules = [
@@ -151,7 +155,6 @@ class AdminController extends Controller
             'email' => 'nullable|string',
             'phone' => 'nullable|string',
             'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
         ];
         //验证错误信息自定义
         $messages = [
@@ -163,7 +166,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->getList($validator->getData());
+        return $this->repository->getAdminList($validator->getData());
     }
 
     /**
@@ -172,7 +175,7 @@ class AdminController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function getInfo(Request $request)
+    public function getAdminInfo(Request $request)
     {
         //验证规则
         $rules = [
@@ -189,7 +192,7 @@ class AdminController extends Controller
             throw new ValidatorException($validator->errors()->all());
         }
 
-        return $this->repository->getInfo($validator->getData());
+        return $this->repository->getAdminInfo($validator->getData());
     }
 
 }

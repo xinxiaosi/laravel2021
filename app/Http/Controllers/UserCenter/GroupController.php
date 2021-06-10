@@ -25,7 +25,7 @@ class GroupController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function addData(Request $request)
+    public function addGroup(Request $request)
     {
         //验证规则
         $rules = [
@@ -54,7 +54,7 @@ class GroupController extends Controller
      * @return array|string[]
      * @throws ValidatorException
      */
-    public function deleteData(Request $request)
+    public function deleteGroup(Request $request)
     {
         //验证规则
         $rules = [
@@ -79,7 +79,7 @@ class GroupController extends Controller
      * @return array
      * @throws ValidatorException
      */
-    public function editData(Request $request)
+    public function editGroup(Request $request)
     {
         //验证规则
         $rules = [
@@ -109,7 +109,7 @@ class GroupController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function getList(Request $request)
+    public function getGroupList(Request $request)
     {
         //验证规则
         $rules = [
@@ -135,7 +135,7 @@ class GroupController extends Controller
      * @return mixed
      * @throws ValidatorException
      */
-    public function getInfo(Request $request)
+    public function getGroupInfo(Request $request)
     {
         //验证规则
         $rules = [

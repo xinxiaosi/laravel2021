@@ -35,6 +35,15 @@ class AdminModel extends UserCenterModel implements JWTSubject
         return $this->strToArrayForVue($value);
     }
 
+    public function role()
+    {
+        return $this->hasMany(AdminRoleModel::class, 'user_id', 'id');
+    }
+
+    public function group()
+    {
+        return $this->hasMany(AdminGroupModel::class, 'user_id', 'id');
+    }
 
     /**********************************修改器***********************************************/
     /**

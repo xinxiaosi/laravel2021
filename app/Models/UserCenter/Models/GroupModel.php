@@ -22,6 +22,6 @@ class GroupModel extends UserCenterModel
 
     public function userGroup()
     {
-        return $this->hasMany(UserGroupModel::class, 'group_id', 'id');
+        return $this->hasMany(AdminGroupModel::class, 'group_id', 'id');
     }
 }

@@ -20,19 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81575127-c765-4b81-a116-7c7b3c783e8e" name="默认的" comment="2021-5-6 18:05:44">
+      <change afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminRoleModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Base/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/GroupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/RoleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/RoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/RoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/RoleModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/RoleModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Routes/common_route.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/common_route.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/GroupModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/GroupModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/UserGroupModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminGroupModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +261,8 @@
       <workItem from="1622690501246" duration="18042000" />
       <workItem from="1622769887777" duration="15947000" />
       <workItem from="1623134924602" duration="2799000" />
-      <workItem from="1623138771345" duration="3063000" />
+      <workItem from="1623138771345" duration="3740000" />
+      <workItem from="1623312588150" duration="3144000" />
     </task>
     <task id="LOCAL-00001" summary="2021-5-6 18:05:44">
       <created>1620295563788</created>
@@ -326,10 +324,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="760" y="199" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1620273453794" />
-    <state x="720" y="255" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1619316731824">
+    <state x="720" y="7" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1623315360345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="720" y="255" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619316731824" />
+    <state x="720" y="7" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623315360345" />
     <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622776685968">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -398,10 +396,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="322" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1622629394890" />
-    <state x="678" y="240" key="NewPhpClassDialog" timestamp="1622776676263">
+    <state x="678" y="240" key="NewPhpClassDialog" timestamp="1623314395927">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="678" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622776676263" />
+    <state x="678" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623314395927" />
     <state x="785" y="442" key="NewPhpFileDialog" timestamp="1622712562295">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

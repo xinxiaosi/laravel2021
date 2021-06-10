@@ -4,16 +4,13 @@ namespace App\Models\UserCenter\Models;
 
 use App\Models\UserCenter\UserCenterModel;
 
-class UserGroupModel extends UserCenterModel
+class AdminGroupModel extends UserCenterModel
 {
-    public $table = 'group';
+    public $table = 'admin_group';
 
     public $fillable = [
-        'id', //int NOT NULL COMMENT '用户id',
+        'admin_id', //int NOT NULL COMMENT '用户id',
         'group_id', //int NOT NULL COMMENT '用户组id',
-        'create_time', //int unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-        'update_time', //int NOT NULL DEFAULT '0' COMMENT '更新时间',
-        'main_id', //mediumint NOT NULL DEFAULT '1' COMMENT '主id',
     ];
 
     public function admin()

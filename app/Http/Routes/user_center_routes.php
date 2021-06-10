@@ -11,11 +11,11 @@ Route::group([
     'middleware' => ['response'],
 ], function () {
 //    Route::post('/login', "AdminController@login");
-    Route::post('/add', "AdminController@addData");
-    Route::delete('/delete', "AdminController@deleteData");
-    Route::put('/edit', "AdminController@editData");
-    Route::get('/list', "AdminController@getList");
-    Route::get('/info', "AdminController@getInfo");
+    Route::post('/add', "AdminController@addAdmin");
+    Route::delete('/delete', "AdminController@deleteAdmin");
+    Route::put('/edit', "AdminController@editAdminAdmin");
+    Route::get('/list', "AdminController@getAdminList");
+    Route::get('/info', "AdminController@getAdminInfo");
 });
 
 //用户组管理
@@ -24,11 +24,11 @@ Route::group([
     'prefix' => 'userCenter/group',
     'middleware' => ['response', 'jwt'],
 ], function () {
-    Route::post('/add', "GroupController@addData");
-    Route::delete('/delete', "GroupController@deleteData");
-    Route::put('/edit', "GroupController@editData");
-    Route::get('/list', "GroupController@getList");
-    Route::get('/info', "GroupController@getInfo");
+    Route::post('/add', "GroupController@addGroup");
+    Route::delete('/delete', "GroupController@deleteGroup");
+    Route::put('/edit', "GroupController@editGroup");
+    Route::get('/list', "GroupController@getGroupList");
+    Route::get('/info', "GroupController@getGroupInfo");
 });
 
 //角色管理

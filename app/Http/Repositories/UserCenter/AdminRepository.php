@@ -6,7 +6,9 @@ namespace App\Http\Repositories\UserCenter;
 
 use App\Exceptions\ApiException;
 use App\Http\Repositories\BaseRepository;
+use App\Models\UserCenter\Models\AdminGroupModel;
 use App\Models\UserCenter\Models\AdminModel;
+use App\Models\UserCenter\Models\AdminRoleModel;
 
 class AdminRepository extends BaseRepository
 {
@@ -49,7 +51,7 @@ class AdminRepository extends BaseRepository
     }
 
 
-    public function addData($data)
+    public function addAdmin($data)
     {
         $user = $this->admin->where('name', $data['name'])->first();
 
@@ -57,19 +59,37 @@ class AdminRepository extends BaseRepository
             throw new ApiException([0, $data['name'] . ' .用户已存在']);
         }
 
-
         $data['uid'] = md5($data['name'] . $data['password'] . time() . uniqid());
         $data['token'] = md5($data['name'] . $data['password'] . time());
 
-        return $this->admin->addItem($data);
+        $admin = $this->admin->addItem($data);
+
+        foreach ($data['role'] as $v) {
+            $role[] = [
+                'user_id' => $admin->id,
+                'role_id' => $v,
+            ];
+        }
+        (new AdminRoleModel())->insert($role);
+
+
+        foreach ($data['group'] as $v) {
+            $group[] = [
+                'user_id' => $admin->id,
+                'group_id' => $v,
+            ];
+        }
+        (new AdminGroupModel())->insert($group);
+
+        return $admin;
     }
 
-    public function deleteData($data)
+    public function deleteAdmin($data)
     {
         return $this->admin->deleteItem($data);
     }
 
-    public function editData($data)
+    public function editAdmin($data)
     {
         if (@is_real_exists($data['id'])) {
             $where['id'] = $data['id'];
@@ -80,11 +100,8 @@ class AdminRepository extends BaseRepository
         return $this->admin->editItem($where, $data);
     }
 
-    public function getInfo($data)
+    public function getAdminInfo($data)
     {
-
-        dd(config('userInfo'));
-
         if (is_real_exists($data['id'])) {
             $where['id'] = $data['id'];
         } else {
@@ -94,14 +111,13 @@ class AdminRepository extends BaseRepository
         return $this->admin->getInfo($where);
     }
 
-    public function getList($data)
+    public function getAdminList($data)
     {
         $where = [];
 
         @is_real_exists($data['id']) && $where['id'] = $data['id'];
         @is_real_exists($data['uid']) && $where['uid'] = $data['uid'];
         @is_real_exists($data['status']) && $where['status'] = $data['status'];
-        @is_real_exists($data['role_id']) && $where['role_id'] = $data['role_id'];
         @is_real_exists($data['name']) && $where['name'] = ['like', '%'. $data['name'] .'%'];
         @is_real_exists($data['email']) && $where['email'] = ['like', '%'. $data['email'] .'%'];
         @is_real_exists($data['phone']) && $where['phone'] = ['like', '%'. $data['phone'] .'%'];
