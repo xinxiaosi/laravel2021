@@ -42,7 +42,21 @@ class AdminModel extends UserCenterModel implements JWTSubject
 
     public function group()
     {
-        return $this->hasMany(AdminGroupModel::class, 'user_id', 'id');
+        return $this->hasOne(AdminGroupModel::class, 'user_id', 'id');
+    }
+
+    public function roleModel()
+    {
+        return $this->hasMany(AdminRoleModel::class, 'user_id', 'id')
+            ->join('role', 'id', '=', 'role_id')
+            ->selectRaw('id, role_id, name, user_id');
+    }
+
+    public function groupModel()
+    {
+        return $this->hasOne(AdminGroupModel::class, 'user_id', 'id')
+            ->join('group', 'id', '=', 'group_id')
+            ->selectRaw('id, group_id, name, user_id');
     }
 
     /**********************************修改器***********************************************/
@@ -63,19 +77,29 @@ class AdminModel extends UserCenterModel implements JWTSubject
         }
     }
 
-    public function getAdminList($where)
+    public function getAdminList($where, $role, $group)
     {
         $res = $this
             ->handleCondition($where)
-//            ->with([
-//                'department:id,department',
-//                'role:id,role',
-//            ])
-            ->orderBy('id', 'desc')
-            ->paginate(config('pageSize'))
-            ->toArray();
+            ->with([
+                'group.group',
+                'role.role',
+            ]);
 
-        return $res;
+        if (!empty($role)) {
+            $res->whereHas("role", function ($query) use($role) {
+                $query->where('role_id', '=', $role);
+            });
+        }
+
+        if (!empty($group)) {
+            $res->whereHas("group", function ($query) use($group) {
+                $query->where('group_id', '=', $group);
+            });
+        }
+
+        return $res->orderBy('id', 'desc')
+            ->paginate(config('pageSize'));
 
     }
 
@@ -87,8 +111,8 @@ class AdminModel extends UserCenterModel implements JWTSubject
         $res = $this
             ->handleCondition($where)
             ->with([
-                'department',
-                'role',
+                'group.group',
+                'role.role',
             ])
             ->orderBy('create_time', 'desc')
             ->first();

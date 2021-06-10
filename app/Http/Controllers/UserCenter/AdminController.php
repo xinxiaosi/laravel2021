@@ -124,7 +124,8 @@ class AdminController extends Controller
             'email' => 'nullable|string',
             'phone' => 'nullable|string',
             'status' => 'nullable|int',
-            'role_id' => 'nullable|int',
+            'role' => 'nullable|array',
+            'group' => 'nullable|array',
         ];
         //验证错误信息自定义
         $messages = [
@@ -149,12 +150,14 @@ class AdminController extends Controller
     {
         //验证规则
         $rules = [
-            'id' => 'nullable|string',
+            'id' => 'nullable|int',
             'uid' => 'nullable|string',
             'name' => 'nullable|string',
             'email' => 'nullable|string',
             'phone' => 'nullable|string',
             'status' => 'nullable|int',
+            'role_id' => 'nullable|int',
+            'group_id' => 'nullable|int',
         ];
         //验证错误信息自定义
         $messages = [

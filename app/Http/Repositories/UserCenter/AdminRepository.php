@@ -50,7 +50,11 @@ class AdminRepository extends BaseRepository
         ]);
     }
 
-
+    /**
+     * @param $data
+     * @return mixed
+     * @throws ApiException
+     */
     public function addAdmin($data)
     {
         $user = $this->admin->where('name', $data['name'])->first();
@@ -63,7 +67,7 @@ class AdminRepository extends BaseRepository
         $data['token'] = md5($data['name'] . $data['password'] . time());
 
         $admin = $this->admin->addItem($data);
-
+        $group = $role = [];
         foreach ($data['role'] as $v) {
             $role[] = [
                 'user_id' => $admin->id,
@@ -84,9 +88,19 @@ class AdminRepository extends BaseRepository
         return $admin;
     }
 
+    /**
+     * @param $data
+     * @return array
+     */
     public function deleteAdmin($data)
     {
-        return $this->admin->deleteItem($data);
+        $ids = explode(',', $data['ids']);
+
+        $this->admin->whereIn('id', $ids)->delete();
+        (new AdminGroupModel())->whereIn('user_id', $ids)->delete();
+        (new AdminRoleModel())->whereIn('user_id', $ids)->delete();
+
+        return [];
     }
 
     public function editAdmin($data)
@@ -97,7 +111,34 @@ class AdminRepository extends BaseRepository
             $where['uid'] = $data['uid'];
         }
 
-        return $this->admin->editItem($where, $data);
+        isset($data['password']) && $data['password'] = md5($data['password']);
+        $admin = $this->admin->handleCondition($where)->first();
+        $admin->update($data);
+        if (!empty($data['role'])) {
+            $role = [];
+            $admin->role()->delete();
+            foreach ($data['role'] as $v) {
+                $role[] = [
+                    'user_id' => $admin->id,
+                    'role_id' => $v
+                ];
+            }
+            $admin->role()->insert($role);
+        }
+
+        if (!empty($data['group'])) {
+            $group = [];
+            $admin->group()->delete();
+            foreach ($data['group'] as $v) {
+                $group[] = [
+                    'user_id' => $admin->id,
+                    'group_id' => $v
+                ];
+            }
+            $admin->group()->insert($group);
+        }
+
+        return [];
     }
 
     public function getAdminInfo($data)
@@ -108,7 +149,7 @@ class AdminRepository extends BaseRepository
             $where['uid'] = $data['uid'];
         }
 
-        return $this->admin->getInfo($where);
+        return $this->admin->getAdminInfo($where);
     }
 
     public function getAdminList($data)
@@ -122,7 +163,10 @@ class AdminRepository extends BaseRepository
         @is_real_exists($data['email']) && $where['email'] = ['like', '%'. $data['email'] .'%'];
         @is_real_exists($data['phone']) && $where['phone'] = ['like', '%'. $data['phone'] .'%'];
 
-        return $this->admin->getAdminList($where);
+        $role = @is_real_exists($data['role_id']) ?  $data['role_id'] : [];
+        $group = @is_real_exists($data['group_id']) ?  $data['group_id'] : [];
+
+        return $this->admin->getAdminList($where, $role, $group);
     }
 
 }

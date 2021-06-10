@@ -15,11 +15,11 @@ class AdminGroupModel extends UserCenterModel
 
     public function admin()
     {
-        return $this->belongsTo(AdminModel::class, 'id', 'id');
+        return $this->belongsTo(AdminModel::class, 'user_id', 'id');
     }
 
     public function group()
     {
-        return $this->belongsTo(AdminModel::class, 'id', 'group_id');
+        return $this->belongsTo(AdminModel::class, 'group_id', 'id');
     }
 }

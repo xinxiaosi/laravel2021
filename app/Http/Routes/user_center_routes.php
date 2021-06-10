@@ -13,7 +13,7 @@ Route::group([
 //    Route::post('/login', "AdminController@login");
     Route::post('/add', "AdminController@addAdmin");
     Route::delete('/delete', "AdminController@deleteAdmin");
-    Route::put('/edit', "AdminController@editAdminAdmin");
+    Route::put('/edit', "AdminController@editAdmin");
     Route::get('/list', "AdminController@getAdminList");
     Route::get('/info', "AdminController@getAdminInfo");
 });

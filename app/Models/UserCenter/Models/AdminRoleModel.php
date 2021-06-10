@@ -20,4 +20,8 @@ class AdminRoleModel extends UserCenterModel
         return $this->belongsTo(AuthModel::class, 'auth_id', 'id');
     }
 
+    public function role()
+    {
+        return $this->belongsTo(RoleModel::class, 'role_id', 'id');
+    }
 }
