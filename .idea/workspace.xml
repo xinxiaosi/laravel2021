@@ -21,12 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="81575127-c765-4b81-a116-7c7b3c783e8e" name="默认的" comment="2021-5-6 18:05:44">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserCenter/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Common/JwtBaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repositories/UserCenter/AdminRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Routes/user_center_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminGroupModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminGroupModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminRoleModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserCenter/Models/AdminRoleModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +255,8 @@
       <workItem from="1622769887777" duration="15947000" />
       <workItem from="1623134924602" duration="2799000" />
       <workItem from="1623138771345" duration="3740000" />
-      <workItem from="1623312588150" duration="6503000" />
+      <workItem from="1623312588150" duration="7098000" />
+      <workItem from="1623381142658" duration="5520000" />
     </task>
     <task id="LOCAL-00001" summary="2021-5-6 18:05:44">
       <created>1620295563788</created>

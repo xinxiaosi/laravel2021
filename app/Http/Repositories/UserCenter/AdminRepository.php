@@ -143,7 +143,7 @@ class AdminRepository extends BaseRepository
 
     public function getAdminInfo($data)
     {
-        if (is_real_exists($data['id'])) {
+        if (is_real_exists(@$data['id'])) {
             $where['id'] = $data['id'];
         } else {
             $where['uid'] = $data['uid'];

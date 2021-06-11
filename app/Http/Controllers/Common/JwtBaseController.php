@@ -80,7 +80,8 @@ class JwtBaseController extends Controller
             return response()->json(['result' => 'failed']);
         }
 
-        return $this->responseWithToken($token);
+        $user = (new AdminModel())->where('name', $credentials['name'])->first();
+        return array_merge($this->responseWithToken($token), $user->toArray());
     }
 
     /**
